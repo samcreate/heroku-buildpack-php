@@ -29,7 +29,8 @@ mv $CACHE_DIR/www .
 if [ -f www/Procfile ]; then
   mv www/Procfile .
 fi
-echo "-----> What is this? $LP_DIR"
+echo "-----> What is LP_DIR? $LP_DIR"
+echo "-----> What is BUILD? $BUILD_DIR"
 APACHE_URL="https://s3.amazonaws.com/php-lp/apache-$APACHE_VERSION.tar.gz"
 echo "-----> Bundling Apache version $APACHE_VERSION"
 curl --silent --max-time 60 --location "$APACHE_URL" | tar xz
@@ -40,7 +41,7 @@ curl --silent --max-time 60 --location "$PHP_URL" | tar xz
 
 # update config files
 cp $LP_DIR/conf/httpd.conf $APACHE_PATH/conf
-cp $LP_DIR/conf/php.ini php
+# cp $LP_DIR/conf/php.ini php
 
 # make php available on bin
 mkdir -p bin
